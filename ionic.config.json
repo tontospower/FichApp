@@ -1,0 +1,7 @@
+{
+  "name": "FichApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
