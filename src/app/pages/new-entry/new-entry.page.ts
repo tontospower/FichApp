@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NewEntryPage implements OnInit {
 
-  private radioButtonValue = "E";
+  public radioButtonValue = "E";
 
   constructor(private dataService: DataService, private router: Router) { }
 
