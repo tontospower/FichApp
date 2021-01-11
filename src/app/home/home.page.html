@@ -13,12 +13,23 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list>
-    <ion-item *ngFor="let entry of entries">
-      {{entry.type}}: {{entry.date | date:'dd/MM/yyyy HH:mm:ss'}}, {{entry.comment}}
-    </ion-item>
-  </ion-list>
+  <ion-content padding>
+    <ion-list>
+      <ion-item class="text" *ngFor="let item of items | async">
+        <ion-item class="text" *ngFor="let entry of item">
+          {{entry | json}}
+        </ion-item>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 
-  <ion-button expand="block" color="success" routerLink="/new-entry" routerDirection="forward">Fichar</ion-button>
+
+  <div style="position: absolute; bottom: 0px; width: 100%">
+    <ion-footer class="ion-no-border">
+      <ion-toolbar>
+        <ion-button expand="block" color="success" routerLink="/new-entry" routerDirection="forward">Fichar</ion-button>
+      </ion-toolbar>
+    </ion-footer>
+  </div>
 
 </ion-content>
