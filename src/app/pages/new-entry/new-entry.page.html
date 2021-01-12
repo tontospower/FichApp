@@ -4,33 +4,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-list>
-  <ion-radio-group [value]="radioButtonValue" #type>
-
-    <ion-item>
-      <ion-label>Entrada</ion-label>
-      <ion-radio slot="start" value="E"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Salida</ion-label>
-      <ion-radio slot="start" value="S"></ion-radio>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Incidencia</ion-label>
-      <ion-radio slot="start" value="I"></ion-radio>
-    </ion-item>
-
-  </ion-radio-group>
-</ion-list>
 
 <ion-content>
+
+  <ion-list>
+    <ion-radio-group [value]="radioButtonValue" #type>
+  
+      <ion-item>
+        <ion-label>Entrada</ion-label>
+        <ion-radio slot="start" value="E"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Salida</ion-label>
+        <ion-radio slot="start" value="S"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Incidencia</ion-label>
+        <ion-radio slot="start" value="I"></ion-radio>
+      </ion-item>
+  
+    </ion-radio-group>
+  </ion-list>
+  
   <ion-item>
-    <ion-textarea placeholder="Comentarios..." #comment></ion-textarea>
+    <ion-textarea placeholder="Comentarios..." #comment style="height: 200px;"></ion-textarea>
   </ion-item>
-
-  <ion-button expand="block" color="success" (click)="onAcceptClick(type.value, comment.value)" routerDirection="backward">Aceptar</ion-button>
-  <ion-button expand="block" color="danger" routerLink="/home" routerDirection="backward">Cancelar</ion-button>
-
 </ion-content>
+
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" color="success" (click)="onAcceptClick(type.value, comment.value)" routerDirection="backward">Aceptar</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" color="danger" routerLink="/home" routerDirection="backward">Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-footer>
