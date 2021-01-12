@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Entry } from '../interfaces/entry';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,16 @@ import { Entry } from '../interfaces/entry';
 export class HomePage {
 
   public entries: Entry[] 
+  public items: Observable<any[]>
   private anteriorElement: Entry;
+
   constructor(private dataService: DataService) {
     
   }
 
   ngOnInit() {
     this.getEntries();
+    this.getItems();
   }
 
   ionViewWillEnter() {
@@ -48,6 +52,10 @@ export class HomePage {
 
         this.entries = entries}
         );
+  }
+
+  public getItems(): void {
+    this.items = this.dataService.getItems();
   }
 
 }
