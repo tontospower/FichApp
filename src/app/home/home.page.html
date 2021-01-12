@@ -6,14 +6,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Fichajes</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <ion-content padding>
+<!-- <ion-content [fullscreen]="true"> -->
+  <ion-content >
+  <!-- <ion-content padding> -->
     <ion-list>
       <ion-item class="text" *ngFor="let item of items | async">
         <ion-item class="text" *ngFor="let entry of item">
@@ -21,15 +16,18 @@
         </ion-item>
       </ion-item>
     </ion-list>
-  </ion-content>
 
 
-  <div style="position: absolute; bottom: 0px; width: 100%">
-    <ion-footer class="ion-no-border">
-      <ion-toolbar>
-        <ion-button expand="block" color="success" routerLink="/new-entry" routerDirection="forward">Fichar</ion-button>
-      </ion-toolbar>
-    </ion-footer>
-  </div>
-
+  <ion-list>
+    <ion-item *ngFor="let entry of entries">
+      {{entry.type}}: {{entry.date | date:'dd/MM/yyyy HH:mm:ss'}}, {{entry.comment}}    -- {{ entry.diffTime | date: "HH:mm:ss"}}
+    </ion-item>
+  </ion-list>
 </ion-content>
+
+<ion-footer>
+  <!-- <ion-toolbar> -->
+    <ion-button expand="block" color="success" routerLink="/new-entry" routerDirection="forward">Fichar</ion-button>
+  <!-- </ion-toolbar> -->
+</ion-footer>
+
