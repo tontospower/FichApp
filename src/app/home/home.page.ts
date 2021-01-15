@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class HomePage {
 
-  public items: Observable<any[]>
+  public entries: any[];
   private anteriorElement: Entry;
 
   constructor(private dataService: DataService) {
@@ -18,7 +18,6 @@ export class HomePage {
   }
 
   ngOnInit() {
-    this.getItems();
   }
 
   ionViewWillEnter() {
@@ -26,7 +25,7 @@ export class HomePage {
   }
 
   public getEntries(): void {
-    this.dataService.getItems()
+    this.dataService.getEntries()
       .subscribe(entries => {
         entries.forEach(element => {
           if (entries.indexOf(element) > 0) {
@@ -46,17 +45,14 @@ export class HomePage {
           }
         });
 
+        this.entries = entries;
         console.log(entries);
       }
       );
   }
 
-  public getItems(): void {
-    this.items = this.dataService.getItems();
-  }
-
   public removeItem(item: Entry) {
-    console.log(item);
+    console.log("removeItem(): ", item);
   }
 
 }

@@ -17,7 +17,7 @@ export class DataService {
     );
   }
 
-  public getItems(): Observable<any[]> {
+  public getEntries(): Observable<any[]> {
     return this.userEntries.valueChanges();
   }
 

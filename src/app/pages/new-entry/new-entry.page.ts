@@ -15,7 +15,7 @@ export class NewEntryPage implements OnInit {
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-    this.dataService.getItems().subscribe(entries => {
+    this.dataService.getEntries().subscribe(entries => {
       this.initializeRadioButtonGroup(entries);
     })
   }
