@@ -26,6 +26,6 @@ export class DataService {
   }
 
   public removeEntry(entry: Entry): void {
-    this.userEntries.set(entry.id, entry);
+    //TODO
   }
 }
