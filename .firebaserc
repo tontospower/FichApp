@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "holamundo-f477a"
+  },
+  "targets": {
+    "holamundo-f477a": {
+      "hosting": {
+        "app": [
+          "holamundo-f477a"
+        ]
+      }
+    }
+  }
+}

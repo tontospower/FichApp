@@ -15,17 +15,19 @@ export class NewEntryPage implements OnInit {
   constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit() {
-    this.dataService.getEntries().subscribe(entries => {
+    this.dataService.getItems().subscribe(entries => {
       this.initializeRadioButtonGroup(entries);
     })
   }
 
   onAcceptClick(type: string, comment: string) {
-    this.dataService.addEntry({
-      date: new Date(),
+    let timestamp = (new Date()).getTime();
+    let newEntry: Entry = {
+      date: timestamp,
       type: type,
       comment: comment
-    });
+    }
+    this.dataService.addEntry(newEntry);
     this.router.navigateByUrl("/home");
   }
 

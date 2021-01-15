@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 })
 export class HomePage {
 
-  public entries: Entry[] 
   public items: Observable<any[]>
 
   constructor(private dataService: DataService) {
@@ -18,17 +17,15 @@ export class HomePage {
   }
 
   ngOnInit() {
-    this.getEntries();
     this.getItems();
-  }
-
-  public getEntries(): void {
-    this.dataService.getEntries()
-      .subscribe(entries => this.entries = entries);
   }
 
   public getItems(): void {
     this.items = this.dataService.getItems();
+  }
+
+  public removeItem(item: Entry) {
+    console.log(item);
   }
 
 }
