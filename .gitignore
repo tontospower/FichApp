@@ -32,3 +32,4 @@ npm-debug.log*
 typings/cordova-typings.d.ts
 .firebase/hosting.d3d3.cache
 
+package-lock.json
