@@ -3,16 +3,24 @@ Test application to learn Angular + Ionic + CSS +...?
 
 git clone https://github.com/tontospower/FichApp.git
 
-Install
+### Install
+```bash
 npm install
 npm install -g @angular/cli
 npm install -g @ionic/cli
+```
 
-Run
+### Run
+```bash
 ionic serve --external
+```
 
-Build
+### Build
+```bash
 ionic build --prod
+```
 
-Deploy
+### Deploy
+```bash
 ng deploy
+```
