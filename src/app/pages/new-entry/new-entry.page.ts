@@ -23,6 +23,7 @@ export class NewEntryPage implements OnInit {
   onAcceptClick(type: string, comment: string) {
     let timestamp = (new Date()).getTime();
     let newEntry: Entry = {
+      key: "",
       date: timestamp,
       type: type,
       comment: comment

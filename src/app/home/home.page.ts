@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Entry } from '../interfaces/entry';
-import { Observable } from 'rxjs';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +13,8 @@ export class HomePage {
   public entries: any[];
   private anteriorElement: Entry;
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService,
+              private alertController: AlertController) {
 
   }
 
@@ -22,6 +23,28 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.getEntries();
+  }
+
+  async presentAlertConfirm(item: Entry) {
+    const alert = await this.alertController.create({
+      header: 'Atención',
+      message: '¿Eliminar registro?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'primary',
+        }, {
+          text: 'Sí',
+          cssClass: 'secondary',
+          handler: () => {
+            this.removeItem(item);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   public getEntries(): void {
@@ -46,13 +69,12 @@ export class HomePage {
         });
 
         this.entries = entries;
-        console.log(entries);
       }
       );
   }
 
   public removeItem(item: Entry) {
-    console.log("removeItem(): ", item);
+    this.dataService.removeEntry(item);
   }
 
 }
