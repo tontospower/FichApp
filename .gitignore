@@ -29,4 +29,7 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+typings/cordova-typings.d.ts
+.firebase/hosting.d3d3.cache
 
+package-lock.json

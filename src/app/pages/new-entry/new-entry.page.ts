@@ -21,11 +21,13 @@ export class NewEntryPage implements OnInit {
   }
 
   onAcceptClick(type: string, comment: string) {
-    this.dataService.addEntry({
-      date: new Date(),
+    let timestamp = (new Date()).getTime();
+    let newEntry: Entry = {
+      date: timestamp,
       type: type,
       comment: comment
-    });
+    }
+    this.dataService.addEntry(newEntry);
     this.router.navigateByUrl("/home");
   }
 

@@ -2,58 +2,30 @@ import { Injectable } from '@angular/core';
 import { Entry } from '../interfaces/entry'
 import { Observable, of } from 'rxjs';
 
-import { AngularFireDatabase } from '@angular/fire/database';
-
-
-class Book {
-  constructor(public id:number, public author: string, public title: string) {
-  }
-}
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private entries: Entry[] = [
-    /*
-    {
-      date: new Date(),
-      comment: "Manual 1"
-    },
-    {
-      date: new Date(),
-      comment: "Manual 2"
-    },
-    {
-      date: new Date(),
-      comment: "Manual 3"
-    }
-    */
-  ]
-
-  public items: Observable<any[]>;
-  
+  private userEntries: AngularFireList<any>;
 
   constructor(db: AngularFireDatabase) {
-    this.items = db.list('entries').valueChanges();
+    this.userEntries = db.list('bbdd/test@test_com/entries', (ref) =>
+      ref.orderByChild('date')
+    );
   }
 
-  public getEntries(): Observable<Entry[]> {
-    return of (this.entries);
+  public getEntries(): Observable<any[]> {
+    return this.userEntries.valueChanges();
   }
-
-  public getItems(): Observable<any[]> {
-    this.items.forEach(element => {
-      console.log(element);
-      
-    });
-    console.log()
-    return this.items;
-  }
-  
 
   public addEntry(entry: Entry): void {
-    this.entries.push(entry);
+    this.userEntries.push(entry);
+  }
+
+  public removeEntry(entry: Entry): void {
+    //TODO
   }
 }

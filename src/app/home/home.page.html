@@ -10,19 +10,15 @@
   <ion-content >
   <!-- <ion-content padding> -->
     <ion-list>
-      <ion-item class="text" *ngFor="let item of items | async">
-        <ion-item class="text" *ngFor="let entry of item">
-          {{entry | json}}
+      <ion-item-sliding lines="none" *ngFor="let entry of entries">
+        <ion-item-options side="start">
+          <ion-item-option color="danger" (click)="removeItem(entry)">Eliminar</ion-item-option>
+        </ion-item-options>
+        <ion-item>
+          {{entry.type}}: {{entry.date | date:'dd/MM/yyyy HH:mm:ss'}}, {{entry.comment}}    -- {{ entry.diffTime | date: "HH:mm:ss"}}
         </ion-item>
-      </ion-item>
+      </ion-item-sliding>
     </ion-list>
-
-
-  <ion-list>
-    <ion-item *ngFor="let entry of entries">
-      {{entry.type}}: {{entry.date | date:'dd/MM/yyyy HH:mm:ss'}}, {{entry.comment}}    -- {{ entry.diffTime | date: "HH:mm:ss"}}
-    </ion-item>
-  </ion-list>
 </ion-content>
 
 <ion-footer>

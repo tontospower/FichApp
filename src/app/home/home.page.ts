@@ -10,17 +10,14 @@ import { Observable } from 'rxjs';
 })
 export class HomePage {
 
-  public entries: Entry[] 
-  public items: Observable<any[]>
+  public entries: any[];
   private anteriorElement: Entry;
 
   constructor(private dataService: DataService) {
-    
+
   }
 
   ngOnInit() {
-    this.getEntries();
-    this.getItems();
   }
 
   ionViewWillEnter() {
@@ -31,31 +28,31 @@ export class HomePage {
     this.dataService.getEntries()
       .subscribe(entries => {
         entries.forEach(element => {
-          if (entries.indexOf(element) >0 ){
-            if (this.anteriorElement.type === 'E' && element.type === 'S'){
-              element.diffTimeValue =  element.date.valueOf() - this.anteriorElement.date.valueOf();
+          if (entries.indexOf(element) > 0) {
+            if (this.anteriorElement.type === 'E' && element.type === 'S') {
+              element.diffTimeValue = element.date.valueOf() - this.anteriorElement.date.valueOf();
               var time = new Date(element.diffTimeValue);
-              element.diffTime = time ;
-            } else if (this.anteriorElement.type === 'S' && element.type === 'E'){
+              element.diffTime = time;
+            } else if (this.anteriorElement.type === 'S' && element.type === 'E') {
               element.diffTimeValue = 0;
               element.diffTime = null;
-            } else if ((this.anteriorElement.type === 'S' && element.type === 'S') || (this.anteriorElement.type === 'E' && element.type === 'E')){
+            } else if ((this.anteriorElement.type === 'S' && element.type === 'S') || (this.anteriorElement.type === 'E' && element.type === 'E')) {
               element.diffTimeValue = -1;
               element.diffTime = null;
             }
-          }else  {
+          } else {
             this.anteriorElement = element;
           }
         });
 
+        this.entries = entries;
         console.log(entries);
-
-        this.entries = entries}
-        );
+      }
+      );
   }
 
-  public getItems(): void {
-    this.items = this.dataService.getItems();
+  public removeItem(item: Entry) {
+    console.log("removeItem(): ", item);
   }
 
 }

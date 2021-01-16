@@ -1,5 +1,5 @@
 export interface Entry {
-    date: Date;
+    date: number;
     type: string;
     comment: string;
     diffTimeValue?: number;
