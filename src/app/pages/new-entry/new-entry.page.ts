@@ -12,7 +12,10 @@ export class NewEntryPage implements OnInit {
 
   public radioButtonValue = "E";
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(
+    private dataService: DataService,
+    private router: Router) {
+   }
 
   ngOnInit() {
     this.dataService.getEntries().subscribe(entries => {
