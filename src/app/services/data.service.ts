@@ -50,7 +50,7 @@ export class DataService {
     minutes = result.resto;
     hours = result.cociente;
     
-    return hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0') + ':' + miliseconds.toString().padStart(2,'0');
+    return hours.toString().padStart(2,'0') + ':' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0') + ':' + miliseconds.toString().padStart(3,'0');
   }
     
   // Date2String (date:Date) {
