@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header mode="ios" [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Fichajes
@@ -7,23 +7,51 @@
 </ion-header>
 
 <!-- <ion-content [fullscreen]="true"> -->
-  <ion-content >
+<ion-content>
+  <ion-virtual-scroll [items]="entries" style="height: 400px;">
+    <ion-item *virtualItem="let i = index; let entry">
+      <ion-row *ngIf="entry.type === 'E'">
+        <ion-col size="12">
+          <ion-text mode="ios"> {{entry.type}}: {{entry.date | date:'dd/MM/yyyy HH:mm:ss a':'+0000'}} </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="entry.type === 'S'">
+        <ion-col size="12">
+          <ion-text mode="ios"> {{entry.type}}: {{entry.date | date:'dd/MM/yyyy HH:mm:ss a':'+0000'}} -- {{entry.diffTime}} </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-text mode="ios">{{entry.comment}}</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-virtual-scroll>
   <!-- <ion-content padding> -->
-    <ion-list>
+  <!-- <ion-list>
       <ion-item-sliding lines="none" *ngFor="let entry of entries">
         <ion-item-options side="start">
           <ion-item-option color="danger" (click)="presentAlertConfirm(entry)">Eliminar</ion-item-option>
+          <ion-item-option color="danger" (click)="removeItem(entry)" >Eliminar</ion-item-option>
         </ion-item-options>
         <ion-item>
-          {{entry.type}}: {{entry.date | date:'dd/MM/yyyy HH:mm:ss'}}, {{entry.comment}}    -- {{ entry.diffTime | date: "HH:mm:ss"}}
+          {{entry.type}}: {{entry.date | date:'dd/MM/yyyy HH:mm:ss a':'+0000'}} -- {{ entry.diffTime }} <br> {{entry.comment}}
         </ion-item>
       </ion-item-sliding>
-    </ion-list>
+    </ion-list> -->
+
+  <ion-label>
+    <b>Tiempo Total: {{sumaTiempoTotal}}</b>
+  </ion-label>
+  <br>
+  <br>
+  <ion-label>
+    <b>Tiempo Realizado: {{sumaTiempoReal}}</b>
+  </ion-label>
 </ion-content>
 
-<ion-footer>
+<ion-footer mode="ios">
   <!-- <ion-toolbar> -->
-    <ion-button expand="block" color="success" routerLink="/new-entry" routerDirection="forward">Fichar</ion-button>
+  <ion-button expand="block" color="success" routerLink="/new-entry" routerDirection="forward">Fichar</ion-button>
   <!-- </ion-toolbar> -->
 </ion-footer>
-
