@@ -18,8 +18,8 @@ import { environment } from '../environments/environment';
 // Firebase
 //import { AngularFireModule } from '@angular/fire';
 //import { environment } from '../environments/environment';
-// import { AngularFirestoreModule } from '@angular/fire/firestore';
-// import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 //import { AngularFireAuthModule } from '@angular/fire/auth';
   
 
@@ -34,8 +34,8 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    // AngularFirestoreModule,
-    // AngularFireStorageModule
+    AngularFirestoreModule,
+    AngularFireStorageModule
   ],
   providers: [
     StatusBar,
